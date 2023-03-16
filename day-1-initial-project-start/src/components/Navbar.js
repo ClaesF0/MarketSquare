@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
           <p className="text-xl font-bold text-gray-800">
-            Your Ecommerce Store
+            React Ecommerce Store
           </p>
           <button
             className="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
@@ -33,13 +33,13 @@ const Navbar = () => {
         </div>
 
         <div className={`md:flex ${isOpen ? "block" : "hidden"} mt-3 md:mt-0`}>
-          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 hover:text-gray-600">
+          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500">
             Shop
           </p>
-          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 hover:text-gray-600">
+          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500">
             Cart
           </p>
-          <p className="block mt-4 md:inline-block md:mt-0 text-gray-800 hover:text-gray-600">
+          <p className="block mt-4 md:inline-block md:mt-0 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500">
             Account
           </p>
         </div>
