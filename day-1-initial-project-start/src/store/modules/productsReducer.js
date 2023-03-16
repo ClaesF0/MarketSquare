@@ -10,7 +10,7 @@ in the reducers is where we have functions to change or amend state
 */
 
 const productsSlice = createSlice({
-  name: "products",
+  name: "productsReducer",
   initialState: {
     products: [],
     singleProduct: null,

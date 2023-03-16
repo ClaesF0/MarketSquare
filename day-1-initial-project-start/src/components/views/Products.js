@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../store/modules/products";
+import { fetchProducts } from "../../store/modules/productsReducer";
 import { Link } from "react-router-dom";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.productsReducer);
 
   useEffect(() => {
     dispatch(fetchProducts());
