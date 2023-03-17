@@ -15,27 +15,27 @@ const SingleProduct = () => {
   }, [dispatch]);
 
   return (
-    <div className="">
-      <hgroup>
-        <h1 className="text-3xl text-gray-600 text-center">
-          {singleProduct.title} from {singleProduct.id} {singleProduct.brand}{" "}
-        </h1>
-        <div className="flex">
+    <div className="w-5/6 mx-auto shadow-md p-2">
+      <hgroup className="">
+        <p className="text-3xl text-gray-600 text-center px-auto">
+          {singleProduct.title} from {singleProduct.brand}{" "}
+        </p>
+        <div className="sm:flex flex-row m-2">
           <img
-            className="mx-auto w-1/3 sm:w-1/4"
+            className="mx-auto w-1/2 sm:w-1/2 "
             src={singleProduct.thumbnail}
           />
-          <div>
+          <div className="info-holder-div m-2">
             <p>{singleProduct.description}</p>
 
-            <span>
+            <span className="">
               Ordinary price: {singleProduct.price} NOK{" "}
               <p className="text-lg font-bold text-green-500">
                 now {singleProduct.discountPercentage} % off!{" "}
               </p>
             </span>
             <div className="flex items-center">
-              Rating: 
+              Rating: {singleProduct.rating}
               {[...Array(5)].map((_, i) => (
                 <svg
                   aria-label={`Rating ${singleProduct.rating} out of 5`}
@@ -52,9 +52,12 @@ const SingleProduct = () => {
                 </svg>
               ))}
             </div>
+            <span>Currently {singleProduct.stock} pieces in stock.</span>
+            <p>Category: {singleProduct.category}</p>
+            <button className="p-2 mt-2 bg-cyan-700 bottom-0 text-gray-200">
+              Add to cart
+            </button>
           </div>
-          <span>Currently {singleProduct.stock} pieces in stock.</span>
-          <p>Category: {singleProduct.category}</p>
         </div>
       </hgroup>
     </div>

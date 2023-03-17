@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="bg-white shadow">
       <div className="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
-          <p className="text-xl font-bold text-gray-800">
+          <p className="text-xl font-bold text-gray-800 cursor-pointer">
             React Ecommerce Store
           </p>
           <button
@@ -32,14 +32,14 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className={`md:flex ${isOpen ? "block" : "hidden"} mt-3 md:mt-0`}>
-          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500">
+        <div className={`md:flex ${isOpen ? "block" : "hidden"} mt-3 md:mt-0 `}>
+          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
             Shop
           </p>
-          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500">
+          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
             Cart
           </p>
-          <p className="block mt-4 md:inline-block md:mt-0 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500">
+          <p className="block mt-4 md:inline-block md:mt-0 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
             Account
           </p>
         </div>
