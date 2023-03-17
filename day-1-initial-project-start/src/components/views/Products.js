@@ -17,7 +17,7 @@ const Products = () => {
       {products.map((product) => (
         <div key={product.id} className="mx-auto  ">
           <hgroup className=" h-[350px] w-[300px] basis-1/4 border-2 border-gray-800 max-w-1/2 sm:max-w-1/3 flex flex-col m-2 p-2">
-            <Link to={`product/${product.id}`}>
+            <Link to={`/product/${product.id}`}>
               <img
                 className="h-[200px] mx-auto bg-cover "
                 src={product.images[0]}

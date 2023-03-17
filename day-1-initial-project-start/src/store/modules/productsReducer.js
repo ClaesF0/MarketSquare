@@ -13,7 +13,7 @@ const productsSlice = createSlice({
   name: "productsReducer",
   initialState: {
     products: [],
-    singleProduct: null,
+    singleProduct: {},
     total: 0,
   },
   reducers: {

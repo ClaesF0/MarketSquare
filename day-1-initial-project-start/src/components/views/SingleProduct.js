@@ -9,14 +9,16 @@ const SingleProduct = () => {
   const { singleProduct } = useSelector((state) => state.productsReducer);
 
   useEffect(() => {
+    console.log(id);
+    console.log("id here", id);
     dispatch(fetchSingleProduct(id));
-  }, [dispatch, id]);
+  }, [dispatch]);
 
   return (
     <div className="">
       <hgroup>
         <h1 className="text-3xl text-gray-600 text-center">
-          {singleProduct.title} from {singleProduct.brand}{" "}
+          {singleProduct.title} from {singleProduct.id} {singleProduct.brand}{" "}
         </h1>
         <div className="flex">
           <img
@@ -56,19 +58,6 @@ const SingleProduct = () => {
         </div>
       </hgroup>
     </div>
-    /* 
-    id: 12,
-      title: 'Brown Perfume',
-      description: 'Royal_Mirage Sport Brown Perfume for Men & Women - 120ml',
-      price: 40,
-      discountPercentage: 15.66,
-      rating: 4,
-      stock: 52,
-      brand: 'Royal_Mirage',
-      category: 'fragrances',
-      thumbnail: 'https://i.dummyjson.com/data/products/12/thumbnail.jpg',
-      images:
-    */
   );
 };
 
