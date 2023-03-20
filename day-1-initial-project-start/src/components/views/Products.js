@@ -29,22 +29,18 @@ const Products = () => {
                 {product.title}
               </span>
 
-              <div className="flex items-center">
-                Rating: {product.rating}
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    aria-label={`Rating ${product.rating} out of 5`}
-                    key={i}
-                    className={`h-5 w-5 fill-current ${
-                      i < product.rating ? "text-yellow-500" : "text-gray-400"
-                    }`}
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M10 0l3.09 6.3 6.9.99-5 4.86 1.18 6.88L10 16.25l-6.07 3.28 1.18-6.88-5-4.86 6.9-.99L10 0z" />
-                  </svg>
-                ))}
-              </div>
+              <label class="rating-label">
+                <strong>Average rating is {product.rating}/5</strong>
+                <input
+                  aria-label={`Rating ${product.rating} out of 5`}
+                  class="rating"
+                  max="5"
+                  readonly
+                  step="0.01"
+                  style={{ "--fill": "#0097a7", "--value": product.rating }}
+                  type="range"
+                />
+              </label>
 
               <p className="mt-2 text-sm text-gray-500">
                 {product.description.slice(0, 80) +
