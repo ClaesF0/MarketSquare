@@ -1,15 +1,20 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBeer } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow">
-      <div className="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
+    <nav className="bg-white shadow sticky top-0 z-10">
+      <div className="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center ">
         <div className="flex items-center justify-between">
-          <p className="text-xl font-bold text-gray-800 cursor-pointer">
-            React Ecommerce Store
-          </p>
+          <Link to={"/"}>
+            <p className="text-xl font-bold text-gray-800 cursor-pointer">
+              Home
+            </p>
+          </Link>
           <button
             className="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
             onClick={() => setIsOpen(!isOpen)}
@@ -33,15 +38,20 @@ const Navbar = () => {
         </div>
 
         <div className={`md:flex ${isOpen ? "block" : "hidden"} mt-3 md:mt-0 `}>
-          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
-            Shop
-          </p>
-          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
-            Cart
-          </p>
           <p className="block mt-4 md:inline-block md:mt-0 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
             Account
           </p>
+
+          <p className="block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800 p-2 hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
+            Shop
+          </p>
+
+          <button className="inline-block mt-4 md:inline-block md:mt-0 mr-6 text-gray-800  hover:text-gray-100 hover:bg-blue-500 cursor-pointer rounded-lg px-2 ">
+            <AiOutlineShoppingCart className="h-[2rem] w-[2rem] rounded-full" />
+            <div className=" rounded-full bg-cyan-700 h-[1.5rem] w-[1.5rem] text-white flex justify-center align-middle">
+              7
+            </div>
+          </button>
         </div>
       </div>
     </nav>

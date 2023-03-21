@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <p className=" text-center text-3xl mt-4">Products</p>
+
       <Router />
     </>
   );
