@@ -33,9 +33,7 @@ const Products = () => {
                 </span>
 
                 <label class="rating-label">
-                  <strong className="text-sm">
-                    Average rating is {product.rating}/5
-                  </strong>
+                  <strong className="text-sm">Rated {product.rating}/5</strong>
                   <input
                     aria-label={`Rating ${product.rating} out of 5`}
                     class="rating"
