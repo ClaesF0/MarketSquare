@@ -1,3 +1,5 @@
+import loaderSlice from "./modules/loaderSlice";
+
 //this will help you create the redux store
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -10,6 +12,8 @@ import productsReducer from "./modules/productsReducer";
 const reducer = combineReducers({
   //list of my modules
   productsReducer,
+
+  loader: loaderSlice,
 });
 
 //here i am creating my store

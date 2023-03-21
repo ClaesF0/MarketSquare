@@ -20,7 +20,7 @@ const Products = () => {
         {products.map((product) => (
           <div key={product.id} className="mx-auto p-2 ">
             <hgroup
-              className="w-[300px] h-[440px] basis-1/4 shadow-lg max-w-1/2 sm:max-w-1/3 flex flex-col m-2 p-4"
+              className="w-[300px] h-[480px] basis-1/4 shadow-lg max-w-1/2 sm:max-w-1/3 flex flex-col m-2 p-4"
               style={{ display: "flex", flexGrow: 1 }}
             >
               <Link to={`/product/${product.id}`}>
@@ -31,9 +31,8 @@ const Products = () => {
                 <span className="text-gray-700 text-sm font-semibold mx-auto">
                   {product.title}
                 </span>
-
-                <label class="rating-label">
-                  <strong className="text-sm">Rated {product.rating}/5</strong>
+                <label class="rating-label ">
+                  <p className="text-xs ">Rated {product.rating}/5</p>
                   <input
                     aria-label={`Rating ${product.rating} out of 5`}
                     class="rating"
@@ -50,24 +49,22 @@ const Products = () => {
                     (product.description.length > 80 ? "..." : ".")}
                 </p>
               </Link>
-              <p className="mt-auto text-sm text-gray-400">
-                Price: {product.price}NOK{" "}
+              <p className="mt-auto text-sm text-gray-400 line-through">
+                {product.price} NOK
               </p>
               <p className="text-green-500 ">
                 {product.discountPercentage}% discount!
               </p>
-              <span className="pl-2 mx-auto mt-auto border-2 border-stone-100 rounded-lg ">
+              <p>
                 {" "}
                 Now{" "}
                 {(
                   product.price -
                   (product.price * product.discountPercentage) / 100
                 ).toFixed(0)}{" "}
-                NOK
-                <button className="p-2 ml-1 bg-cyan-700 text-gray-200 mb-0 rounded-r-md  hover:bg-blue-500 hover:text-white ">
-                  Add to cart
-                </button>
-              </span>
+                NOK!
+              </p>
+              <span className="pl-2 mx-auto mt-auto border-2 border-stone-100 rounded-lg "></span>
             </hgroup>
           </div>
         ))}

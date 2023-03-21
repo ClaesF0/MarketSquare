@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { act } from "react-dom/test-utils";
+import { setLoadingState } from "./loaderSlice";
 
 /*
 //Slice. 
@@ -40,12 +41,15 @@ Action is where we make API-calls, we never change state in actions
 const { SET_PRODUCTS } = productsSlice.actions;
 const { SET_SINGLE_PRODUCT } = productsSlice.actions;
 //this will fetch multiple products
+//we have two functions beacuase its redux pattern, its not recommended with a single one.
 export const fetchProducts = () => async (dispatch) => {
+  dispatch(setLoadingState(true)); //here we show the loader until call is done
   try {
     const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
     console.log("data.products", data.products);
     dispatch(SET_PRODUCTS(data.products));
+    dispatch(setLoadingState(false)); //here we hide the loader
   } catch (e) {
     //handle any errors that occur during the api call fetchproducts
     return console.error(e);
@@ -54,9 +58,11 @@ export const fetchProducts = () => async (dispatch) => {
 
 //this will fetch single product by ID
 export const fetchSingleProduct = (id) => async (dispatch) => {
+  dispatch(setLoadingState(true)); //here we show the loader until call is done
   try {
     const response = await fetch(`https://dummyjson.com/products/${id}`);
     const singleProductData = await response.json();
     dispatch(SET_SINGLE_PRODUCT(singleProductData));
+    dispatch(setLoadingState(false)); //here we hide the loader
   } catch (e) {}
 };

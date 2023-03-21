@@ -6,12 +6,15 @@ import Navbar from "./components/Navbar";
 import Products from "./components/views/Products";
 import Router from "./routes/Router";
 
+import Loader from "./components/shared/Loader";
+
 function App() {
+  const { isLoading } = useSelector((state) => state.loader);
   return (
     <>
       <Navbar />
-
       <Router />
+      {isLoading && <Loader />}
     </>
   );
 }
