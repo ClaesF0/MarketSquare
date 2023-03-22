@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react"; //this will help run function to fetch products by ID when the component mounts
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct } from "../../store/modules/productsReducer";
+import { addSingleProductToCart } from "../../store/modules/cartSlice";
 
 const SingleProduct = () => {
   let { id } = useParams();
@@ -195,7 +196,11 @@ const SingleProduct = () => {
                 (singleProduct.price * singleProduct.discountPercentage) / 100
               ).toFixed(0)}{" "}
               NOK
-              <button className="p-2 ml-1 bg-cyan-700 text-gray-200 mb-0 rounded-r-md  hover:bg-blue-500 hover:text-white ">
+              <button
+                type="submit"
+                className="p-2 ml-1 bg-cyan-700 text-gray-200 mb-0 rounded-r-md  hover:bg-blue-500 hover:text-white "
+                onClick={() => dispatch(addSingleProductToCart(singleProduct))}
+              >
                 Add to cart
               </button>
             </span>

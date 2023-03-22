@@ -8,11 +8,13 @@ import { combineReducers } from "@reduxjs/toolkit";
 
 import productsReducer from "./modules/productsReducer";
 
+import cartSlice from "./modules/cartSlice";
+
 //here i am combining my modules
 const reducer = combineReducers({
   //list of my modules
   productsReducer,
-
+  cart: cartSlice,
   loader: loaderSlice,
 });
 
