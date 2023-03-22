@@ -7,8 +7,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow sticky top-0 z-10">
-      <div className="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center ">
+    <nav className="bg-white shadow sticky top-0 z-10 mx-auto">
+      <div className="container mx-auto px-6 py-3 md:flex md:justify-evenly md:items-center ">
         <div className="flex items-center justify-between">
           <Link to={"/"}>
             <p className="text-xl font-bold text-gray-800 cursor-pointer">
@@ -38,7 +38,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div class="flex justify-center">
+        <div id="searchBar" class="flex justify-center">
           <div class="xl:w-96">
             <div class="relative flex w-full flex-wrap items-stretch">
               <input
@@ -49,7 +49,7 @@ const Navbar = () => {
                 aria-describedby="button-addon3"
               />
               <button
-                class="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                class="relative z-[2] rounded-r border-2 border-slate-500 px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-cyan-700 hover:text-white focus:outline-none focus:ring-0"
                 type="button"
                 id="button-addon3"
                 data-te-ripple-init
