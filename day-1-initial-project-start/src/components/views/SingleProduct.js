@@ -15,7 +15,7 @@ const SingleProduct = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-5/6 mx-auto shadow-md p-2">
+    <div className="w-5/6 mx-auto shadow-md p-2 ">
       <hgroup className="">
         <p className="text-3xl text-gray-600 text-center px-auto">
           {singleProduct.title} from {singleProduct.brand}{" "}

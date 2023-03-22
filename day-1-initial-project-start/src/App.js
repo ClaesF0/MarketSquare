@@ -13,6 +13,9 @@ function App() {
   return (
     <>
       <Navbar />
+      <p className="bg-cyan-700 w-full mx-auto text-center text-white py-2">
+        Free shipping on orders over 500 NOK
+      </p>
       <Router />
       {isLoading && <Loader />}
     </>

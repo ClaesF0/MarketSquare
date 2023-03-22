@@ -14,13 +14,13 @@ const Products = () => {
 
   return (
     <>
-      <p className=" text-center text-3xl mt-4">Products</p>
+      <p className=" text-center text-3xl mt-4 ">Products</p>
 
-      <div className="flex flex-wrap mx-auto justify-between w-5/6">
+      <div className="flex flex-wrap mx-auto justify-between w-5/6 ">
         {products.map((product) => (
           <div key={product.id} className="mx-auto p-2 ">
             <hgroup
-              className="w-[300px] h-[480px] basis-1/4 shadow-lg max-w-1/2 sm:max-w-1/3 flex flex-col m-2 p-4"
+              className="w-[300px] h-[480px] basis-1/4 shadow-lg max-w-1/2 sm:max-w-1/3 flex flex-col m-2 p-4 rounded-md"
               style={{ display: "flex", flexGrow: 1 }}
             >
               <Link to={`/product/${product.id}`}>
