@@ -15,6 +15,7 @@ const productsSlice = createSlice({
   initialState: {
     products: [],
     singleProduct: {},
+    isError: false,
     total: 0,
   },
   reducers: {
@@ -27,10 +28,14 @@ const productsSlice = createSlice({
     SET_SINGLE_PRODUCT: (state, action) => {
       state.singleProduct = action.payload;
     },
+    SET_ERROR: (state, action) => {
+      state.isError = action.payload;
+    },
   },
 });
 
 export default productsSlice.reducer;
+const { SET_ERROR } = productsSlice.actions;
 
 /*
 //Actions
@@ -52,17 +57,33 @@ export const fetchProducts = () => async (dispatch) => {
     dispatch(setLoadingState(false)); //here we hide the loader
   } catch (e) {
     //handle any errors that occur during the api call fetchproducts
-    return console.error(e);
+    return console.error(e.message);
   }
 };
 
 //this will fetch single product by ID
 export const fetchSingleProduct = (id) => async (dispatch) => {
   dispatch(setLoadingState(true)); //here we show the loader until call is done
+  let response;
   try {
     const response = await fetch(`https://dummyjson.com/products/${id}`);
     const singleProductData = await response.json();
     dispatch(SET_SINGLE_PRODUCT(singleProductData));
     dispatch(setLoadingState(false)); //here we hide the loader
-  } catch (e) {}
+  } catch (e) {
+    console.log("some error");
+    return console.error(e.message);
+  }
+  //check if response is ok or not
+  if (response.ok) {
+    console.log("the response is ok");
+    dispatch(handleErrorResponse(false));
+  } else {
+    console.log("the response is not ok");
+    dispatch(handleErrorResponse(true));
+  }
+};
+
+export const handleErrorResponse = (APIResponseStatus) => (dispatch) => {
+  dispatch(SET_ERROR(APIResponseStatus));
 };

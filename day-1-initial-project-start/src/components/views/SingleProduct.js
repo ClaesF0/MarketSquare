@@ -3,11 +3,14 @@ import { useEffect } from "react"; //this will help run function to fetch produc
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct } from "../../store/modules/productsReducer";
 import { addSingleProductToCart } from "../../store/modules/cartSlice";
+import PageNotFound from "./PageNotFound";
 
 const SingleProduct = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
-  const { singleProduct } = useSelector((state) => state.productsReducer);
+  const { singleProduct, isError } = useSelector(
+    (state) => state.productsReducer
+  );
 
   useEffect(() => {
     console.log(id);
@@ -16,19 +19,21 @@ const SingleProduct = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-5/6 mx-auto shadow-md p-2 ">
-      <hgroup className="">
-        <p className="text-3xl text-gray-600 text-center px-auto">
-          {singleProduct.title} from {singleProduct.brand}{" "}
-        </p>
-        <div className="sm:flex flex-row m-2">
-          {singleProduct.images && singleProduct.images.length && (
-            <img
-              className="mx-auto w-1/2 sm:w-1/2 "
-              src={singleProduct.thumbnail}
-            />
-          )}
-          {/*
+    <>
+      {singleProduct && !isError && (
+        <div className="w-5/6 mx-auto shadow-md p-2 ">
+          <hgroup className="">
+            <p className="text-3xl text-gray-600 text-center px-auto">
+              {singleProduct.title} from {singleProduct.brand}{" "}
+            </p>
+            <div className="sm:flex flex-row m-2">
+              {singleProduct.images && singleProduct.images.length && (
+                <img
+                  className="mx-auto w-1/2 sm:w-1/2 "
+                  src={singleProduct.thumbnail}
+                />
+              )}
+              {/*
 
 <div
             id="default-carousel"
@@ -166,48 +171,57 @@ const SingleProduct = () => {
           </div>
 */}
 
-          <div className="info-holder-div m-2">
-            <p>{singleProduct.description}</p>
+              <div className="info-holder-div m-2">
+                <p>{singleProduct.description}</p>
 
-            <label class="rating-label">
-              <strong>Average rating is {singleProduct.rating}/5</strong>
-              <input
-                aria-label={`Rating ${singleProduct.rating} out of 5`}
-                class="rating"
-                max="5"
-                readonly
-                step="0.01"
-                style={{ "--fill": "#0097a7", "--value": singleProduct.rating }}
-                type="range"
-              />
-            </label>
+                <label class="rating-label">
+                  <strong>Average rating is {singleProduct.rating}/5</strong>
+                  <input
+                    aria-label={`Rating ${singleProduct.rating} out of 5`}
+                    class="rating"
+                    max="5"
+                    readonly
+                    step="0.01"
+                    style={{
+                      "--fill": "#0097a7",
+                      "--value": singleProduct.rating,
+                    }}
+                    type="range"
+                  />
+                </label>
 
-            <span>Currently {singleProduct.stock} pieces in stock.</span>
-            <p>Category: {singleProduct.category}</p>
-            <span className="">
-              Ordinary price: {singleProduct.price} NOK{" "}
-              <p className="text-lg font-bold text-green-500">
-                now {singleProduct.discountPercentage} % off!{" "}
-              </p>
-            </span>
-            <span className="pl-2 py-2 mx-auto mt-auto border-2 border-stone-100 rounded-lg ">
-              {(
-                singleProduct.price -
-                (singleProduct.price * singleProduct.discountPercentage) / 100
-              ).toFixed(0)}{" "}
-              NOK
-              <button
-                type="submit"
-                className="p-2 ml-1 bg-cyan-700 text-gray-200 mb-0 rounded-r-md  hover:bg-blue-500 hover:text-white "
-                onClick={() => dispatch(addSingleProductToCart(singleProduct))}
-              >
-                Add to cart
-              </button>
-            </span>
-          </div>
+                <span>Currently {singleProduct.stock} pieces in stock.</span>
+                <p>Category: {singleProduct.category}</p>
+                <span className="">
+                  Ordinary price: {singleProduct.price} NOK{" "}
+                  <p className="text-lg font-bold text-green-500">
+                    now {singleProduct.discountPercentage} % off!{" "}
+                  </p>
+                </span>
+                <span className="pl-2 py-2 mx-auto mt-auto border-2 border-stone-100 rounded-lg ">
+                  {(
+                    singleProduct.price -
+                    (singleProduct.price * singleProduct.discountPercentage) /
+                      100
+                  ).toFixed(0)}{" "}
+                  NOK
+                  <button
+                    type="submit"
+                    className="p-2 ml-1 bg-cyan-700 text-gray-200 mb-0 rounded-r-md  hover:bg-blue-500 hover:text-white "
+                    onClick={() =>
+                      dispatch(addSingleProductToCart(singleProduct))
+                    }
+                  >
+                    Add to cart
+                  </button>
+                </span>
+              </div>
+            </div>
+          </hgroup>
         </div>
-      </hgroup>
-    </div>
+      )}
+      {isError && <p className="text-xl">NOPE</p> && <PageNotFound />}
+    </>
   );
 };
 
