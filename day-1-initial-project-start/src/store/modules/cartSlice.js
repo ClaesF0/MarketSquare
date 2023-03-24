@@ -11,10 +11,20 @@ const cartSlice = createSlice({
     ADD_PRODUCT_TO_CART: (state, action) => {
       //TODO i will update my productsInCart-array , i expect action.payload and need to update cart, therefore i need actions and connect button
       console.log("action", action);
-      state.productsInCart = [...state.productsInCart, action.payload];
-      state.numberOfProductsInCart = state.productsInCart.length;
-      console.log("state.productsInCart.length", state.productsInCart.length);
+      console.log("im adding an item to the cart");
+      console.log(action.payload);
+      const isProductInCart = state.productsInCart.some(
+        (product) => product.id === action.payload.id
+      );
+      if (isProductInCart) {
+        //do nothing if alread product in cart
+      } else {
+        state.productsInCart = [...state.productsInCart, action.payload];
+        state.numberOfProductsInCart = state.productsInCart.length;
+        console.log("state.productsInCart.length", state.productsInCart.length);
+      }
     },
+
     REMOVE_PRODUCT_FROM_CART: (state, action) => {
       console.log("state", state);
       console.log("action", action);

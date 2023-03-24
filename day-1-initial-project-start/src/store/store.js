@@ -10,12 +10,15 @@ import productsReducer from "./modules/productsReducer";
 
 import cartSlice from "./modules/cartSlice";
 
+import errorSlice from "./modules/errorSlice";
+
 //here i am combining my modules
 const reducer = combineReducers({
   //list of my modules
   productsReducer,
   cart: cartSlice,
   loader: loaderSlice,
+  error: errorSlice,
 });
 
 //here i am creating my store

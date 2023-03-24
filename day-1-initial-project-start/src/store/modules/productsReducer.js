@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import { setLoadingState } from "./loaderSlice";
+import { setError } from "./errorSlice";
 
 /*
 //Slice. 
@@ -53,10 +53,13 @@ export const fetchProducts = () => async (dispatch) => {
     const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
     console.log("data.products", data.products);
+
     dispatch(SET_PRODUCTS(data.products));
     dispatch(setLoadingState(false)); //here we hide the loader
   } catch (e) {
     //handle any errors that occur during the api call fetchproducts
+    dispatch(setLoadingState(false)); //here we hide the loader
+    dispatch(setError(true, e.message));
     return console.error(e.message);
   }
 };
